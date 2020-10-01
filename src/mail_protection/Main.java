@@ -7,18 +7,25 @@ public class Main {
     public static void main(String[] args) {
         AccountManagerImpl manager = new AccountManagerImpl();
 
-        Person Masha = new Person("Masha", "01.02.1998");
-        Person Ivan = new Person("Ivan", "01.02.1990");
-        Person Kolya = new Person("Kolya", "01.02.1899");
-        Person Sveta = new Person("Sveta", "01.02.1997");
+        Person masha = new Person("Masha", "01.02.1998");
+        Person ivan = new Person("Ivan", "01.02.1990");
+        Person kolya = new Person("Kolya", "01.02.1899");
+        Person sveta = new Person("Sveta", "01.02.1997");
+        Person misha = new Person("Misha", "01.02.1997");
+        Person vadim = new Person("Vadim", "01.02.1997");
+        Person nata = new Person("Nata", "01.02.1997");
+
 
         try {
-            manager.registerNewAccount("Masha@gmail.com", "password", Masha);
-            manager.registerNewAccount("Ivan@gmail.com", "1234", Ivan);
-            manager.registerNewAccount("Kolya@gmail.com", "2345", Kolya);
-            manager.registerNewAccount("Sveta@gmail.com", "2345678", Sveta);
+            manager.registerNewAccount("Masha@gmail.com", "password", masha);
+            manager.registerNewAccount("Ivan@gmail.com", "1234", ivan);
+            manager.registerNewAccount("Kolya@gmail.com", "2345", kolya);
+            manager.registerNewAccount("Sveta@gmail.com", "2345678", sveta);
+            manager.registerNewAccount("Misha@gmail.com", "password", misha);
+            manager.registerNewAccount("Vadim@gmail.com", "password", vadim);
+            manager.registerNewAccount("Nata@gmail.com", "password", nata);
 
-            manager.registerNewAccount("Masha@gmail.com", "password", Masha);
+
         } catch (DuplicateAccountException | IOException e) {
             System.out.println(e.getMessage());
         }
@@ -63,7 +70,7 @@ public class Main {
         }
 
         try {
-            System.out.println(manager.getPerson("email", "2345"));
+            System.out.println(manager.getPerson("Misha@gmail.com", "password"));
         } catch (WrongCredentialsException | TooManyLoginAttemptsException | IOException e) {
             System.out.println(e.getMessage());
         }
